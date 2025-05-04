@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pixel Cake with Music</title>
+  <style>
+    body {
+      background-color: #fdf6e3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: monospace;
+    }
+
+    .cake-container {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      margin-top: 40px;
+    }
+
+    .cake {
+      width: 200px;
+      height: 120px;
+      background-color: #8b4513;
+      position: relative;
+      box-shadow: 5px 5px 0 #5c2e0f;
+    }
+
+    .layer-top {
+      position: absolute;
+      top: 0;
+      width: 200px;
+      height: 40px;
+      background-color: #d2691e;
+      border-bottom: 4px solid #a0522d;
+    }
+
+    .frosting {
+      position: absolute;
+      top: 0;
+      width: 200px;
+      height: 20px;
+      background-color: #fff0f5;
+      border-bottom: 2px solid #ff69b4;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .candle {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 40px;
+      background-color: #4682b4;
+      box-shadow: 2px 2px 0 #2f4f4f;
+    }
+
+    .flame {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(circle, yellow 40%, orange 60%, red 90%);
+      border-radius: 50%;
+      box-shadow: 0 0 15px yellow;
+      animation: flicker 0.2s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); }
+      to { transform: translateX(-50%) scale(1.2); }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 25px;
+      font-size: 18px;
+      background-color: #ff1493;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 #a0006d;
+    }
+
+    button:hover {
+      background-color: #c71585;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cake-container">
+    <div class="cake">
+      <div class="layer-top"></div>
+      <div class="frosting"></div>
+    </div>
+    <div class="candle">
+      <div class="flame" id="flame"></div>
+    </div>
+  </div>
+
+  <button onclick="blowOut()">Blow Out Candle</button>
+
+  <!-- 🎵 Audio Element -->
+  <audio id="birthdaySong">
+    <source src="happy_birthday.mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <script>
+    function blowOut() {
+      const flame = document.getElementById("flame");
+      const song = document.getElementById("birthdaySong");
+
+      if (flame) {
+        flame.style.display = "none";
+      }
+
+      if (song) {
+        song.play();
+      }
+    }
+  </script>
+
+</body>
+</html>
